@@ -1,0 +1,100 @@
+body{
+  background-color: #000000;
+}
+
+p{
+  color: #af8baf;
+  margin-left: 2%;
+}
+
+.container-fluid{
+  padding: 10% 10% 0 13%;
+  text-align: left;
+  position: relative;
+}
+
+.big-heading{
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 6rem;
+  letter-spacing: 5px;
+  line-height: 2;
+}
+
+.title-text{
+  color: #af8baf;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  margin-left: 2%;
+}
+
+.btn{
+  color: #ffffff;
+  background-color: #e21e1e;
+  width: 200px;
+  margin: 10% 3% 5% 3%;
+}
+
+.doodle-img{
+  position: absolute;
+  left: 200px;
+  top: 180px;
+}
+
+.html-img{
+  position: absolute;
+  left: 30px;
+  bottom: 170px;
+  /* left: 200px;
+  top: 0; */
+}
+
+.css-img{
+  position: absolute;
+  left: 200px;
+  top: 0;
+  /* right: 0px;
+  bottom: 150px; */
+}
+
+.js-img{
+  position: absolute;
+  right: 20px;
+  bottom: 170px;
+  /* left: 30px;
+  bottom: 150px; */
+}
+
+@media screen and (max-width: 1028px) {
+  .container-fluid{
+    text-align: center;
+    position: static;
+  }
+  .big-heading{
+    font-size: 5.5rem;
+    letter-spacing: 0;
+
+  }
+  .doodle-img{
+    visibility: hidden;
+  }
+  .html-img{
+    width: 110px;
+    height: 110px;
+    margin: 5% 0;
+    position: static;
+  }
+  .css-img{
+    width: 110px;
+    height: 110px;
+    margin: 5% 0;
+    position: static;
+  }
+  .js-img{
+    width: 110px;
+    height: 110px;
+    margin: 5% 0;
+    position: static;
+  }
+}

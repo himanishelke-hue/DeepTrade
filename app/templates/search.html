@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- 🔥 PREDICT CARD -->
+    <div class="row justify-content-center" style="padding-top: 40px;">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+
+            <div id="predictCard" class="rounded p-4 glow-card">
+
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h3 class="text-primary">Stock Market Predictor</h3>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="tickerinp" placeholder="Ticker Name">
+                    <label>Ticker Name</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="number" class="form-control" id="days" placeholder="Days">
+                    <label>Number of Days</label>
+                </div>
+
+                <div class="mb-3">
+                    <a href="/ticker">Search Ticker Value</a>
+                </div>
+
+                <button class="btn btn-primary w-100" onclick="LoadURL()">Predict</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 🔥 POPULAR STOCKS -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="rounded p-4">
+
+            <h3 class="text-primary mb-4">
+                <i class="fa fa-chart-line me-2"></i>Popular Stocks
+            </h3>
+
+            <div class="row">
+                {% for stock in popular_stocks %}
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+
+                    <div class="rounded p-4 stock-card">
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <h5 class="text-primary">{{ stock.Name }}</h5>
+
+                            <span class="{% if '-' in stock.Change %}text-danger{% else %}text-success{% endif %}">
+                                {{ stock.Change }}
+                            </span>
+                        </div>
+
+                        <p><b>Symbol:</b> {{ stock.Ticker }}</p>
+                        <p><b>Price:</b> {{ stock.Current_Price }}</p>
+                        <p><b>Volume:</b> {{ stock.Volume }}</p>
+
+                        <div class="mt-3">
+                            <input type="number" class="form-control mb-2"
+                                   id="days_{{ stock.Ticker|cut:'.NS' }}"
+                                   value="5" min="1" max="365">
+
+                            <button class="btn btn-primary w-100"
+                                    onclick="predictStock('{{ stock.Ticker }}')">
+                                Predict
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- 🔥 JS -->
+<script>
+
+function LoadURL() {
+    let ticker = document.getElementById("tickerinp").value;
+    let days = document.getElementById("days").value;
+
+    if (!ticker || !days) {
+        alert("Enter ticker and days");
+        return;
+    }
+
+    window.location.href = `/predict/${ticker}/${days}`;
+}
+
+function predictStock(ticker) {
+    let days = document.getElementById("days_" + ticker.replace('.NS','')).value;
+    window.location.href = `/predict/${ticker}/${days}`;
+}
+
+</script>
+
+<!-- 🔥 STYLE -->
+<style>
+
+.glow-card {
+    background: rgba(10,15,30,0.85);
+    border: 1px solid rgba(0,255,255,0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    transition: 0.3s;
+}
+
+.glow-card:hover {
+    box-shadow: 0 0 40px #00f0ff;
+}
+
+.stock-card {
+    background: rgba(10,15,30,0.7);
+    border: 1px solid rgba(0,255,255,0.1);
+    transition: 0.3s;
+}
+
+.stock-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px #00ff9d;
+}
+
+/* Neon colors */
+.text-success {
+    color: #00ff9d !important;
+    text-shadow: 0 0 8px #00ff9d;
+}
+
+.text-danger {
+    color: #ff4d4d !important;
+    text-shadow: 0 0 8px #ff4d4d;
+}
+
+</style>
+
+{% endblock %}

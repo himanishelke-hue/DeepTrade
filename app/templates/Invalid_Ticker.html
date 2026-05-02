@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Error — DeepTrade{% endblock %}
+{% block content %}
+<div class="container text-center py-5">
+    <h1 style="font-size:5rem; color:#f87171;">⚠️</h1>
+    <h2 class="text-white mb-3">{{ error_message }}</h2>
+    <p class="text-secondary mb-4">Please check your input and try again.</p>
+    <a href="/search" class="btn btn-primary px-4 me-2">← Try Again</a>
+    <a href="/" class="btn btn-outline-secondary px-4">Home</a>
+</div>
+{% endblock %}

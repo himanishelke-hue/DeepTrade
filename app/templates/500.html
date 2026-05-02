@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Server Error — DeepTrade{% endblock %}
+{% block content %}
+<div class="container text-center py-5">
+  <h1 style="font-size:5rem; color:#f87171;">500</h1>
+  <h2 class="text-white mb-3">Something went wrong</h2>
+  <p class="text-secondary mb-4">
+    An external service (live market data or AI) may be temporarily unavailable.<br>
+    Please wait a moment and try again.
+  </p>
+  <a href="/" class="btn btn-primary px-4">← Go Home</a>
+</div>
+{% endblock %}

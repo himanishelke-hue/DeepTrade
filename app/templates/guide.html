@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid pt-4 px-4">
+
+<div class="rounded p-4">
+<h4>Guide / Tutorial</h4>
+
+<p><div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Lessons</h6>
+                    </div>
+                    <!-- Navigation Cards Start -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="neon-card d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-home fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Go to</p>
+                                    <h6 class="mb-0"><a href="/" class="text-white text-decoration-none">Home Page</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="neon-card d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-search fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Go to</p>
+                                    <h6 class="mb-0"><a href="/search" class="text-white text-decoration-none">Predict Stocks</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="neon-card d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-list-alt fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Go to</p>
+                                    <h6 class="mb-0"><a href="/ticker" class="text-white text-decoration-none">Ticker Info</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="neon-card d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-question-circle fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Take the</p>
+                                    <h6 class="mb-0"><a href="/quiz" class="text-white text-decoration-none">Stock Quiz</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navigation Cards End -->
+
+                    <!-- QUESTION Start -->
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Lesson 1: PE/Ratio(TTM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>The PE Ratio, or Price-to-Earnings Ratio, is a measure that compares the price of a company's stock to its earnings per share (EPS). Essentially, it tells you how much investors are willing to pay for each rupees of a company's earnings. The "TTM" stands for "Trailing Twelve Months," indicating that the ratio is calculated using the earnings over the past year. </td>
+                                </tr>
+                            </tbody>
+
+                            
+                        </table>
+                        <div class="text-center my-4">
+<div class="ratio ratio-16x9">
+<iframe
+src="https://www.youtube-nocookie.com/embed/dJPw1XmKA7Q"
+title="PE Ratio Explained"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin"
+allowfullscreen>
+</iframe>
+</div>
+                    </div><br>
+                    <!-- QUESTION End -->
+                    <!-- QUESTION Start -->
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Lesson 2:Industry P/E</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Let's say you and some other kids in your neighborhood all have lemonade stands. Each stand makes different amounts of money, and people pay different amounts to own a piece of those stands (like we talked about with PE Ratio).
+
+                                        Now, imagine you want to figure out how much people usually pay to own a piece of any lemonade stand in your neighborhood, not just yours. So, you look at all the lemonade stands, see how much money they made, and how much people paid for shares in each one.
+                                        
+                                        The "Industry PE" is like an average of all these ratios from all the lemonade stands in the neighborhood. It shows you, on average, how much people are willing to pay for a share compared to how much money the stands make.
+                                        
+                                        So if most people are paying a lot more for each lemonade stand share than what the stands earn, the Industry PE will be high. This means that people really think lemonade stands in your neighborhood are super cool and will make more money later on. If the number is low, it means people aren't paying much more than what the stands are earning right now. </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center my-4">
+<div class="ratio ratio-16x9">
+<iframe
+src="https://www.youtube-nocookie.com/embed/Ac-5L0Q_q14"
+title="Industry PE Explained"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin"
+allowfullscreen>
+</iframe>
+</div>
+                    </div><br>
+                    <!-- QUESTION End -->
+                    <!-- QUESTION Start -->
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Lesson 3: Book Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Imagine you have a piggy bank where you save all the money you get from doing chores. One day you decide to count how much money is inside. Let's say you find that you have 50 50inyourpiggybank.This50 is like your piggy bank's "Book Value" – it's the actual amount of money saved up after all this time.
+                                        
+                                        If your piggy bank was like a company, the Book Value would be the real money value that the company has from everything it owns after it pays off what it owes. It's like counting up all the money a company has, not the extra amount people might pay because they think it's special or will be worth more later. It's about what's there right now, in the company's "piggy bank."</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center my-4">
+<div class="ratio ratio-16x9">
+<iframe 
+src="https://www.youtube.com/embed/y29s-qgWQfo?rel=0"
+title="Book Value Explained"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin"
+allowfullscreen>
+</iframe>
+</div>
+                    </div><br>
+                    <!-- QUESTION End -->
+                    <!-- Bottom Navigation Buttons -->
+                    <div class="align-items-center justify-content-center mt-4">
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <a href="/search" class="btn btn-primary py-3 w-100">
+                                    <i class="fa fa-search me-2"></i>Start Predicting Stocks
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="/quiz" class="btn btn-primary py-3 w-100">
+                                    <i class="fa fa-question-circle me-2"></i>Take A Quiz
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Ends -->
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#"></a>, 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div></p>
+
+</div>
+
+</div>
+
+{% endblock %}

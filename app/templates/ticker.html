@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid pt-4 px-2">
+
+    <div class="rounded p-4" style="
+    background: rgba(10,15,30,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,255,255,0.15);
+    box-shadow: 0 0 25px rgba(0,255,255,0.08);
+    ">
+
+        <div class="d-flex justify-content-between mb-4">
+            <h6>All Tickers</h6>
+            <a href="https://finance.yahoo.com/trending-tickers">Show All</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table text-white align-middle table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for i in ticker_list %}
+                    <tr>
+                        <td>{{ i.Symbol }}</td>
+                        <td>{{ i.Name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

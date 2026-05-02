@@ -1,0 +1,199 @@
+
+{% load static %}
+{% load socialaccount %}
+{% get_providers as socialaccount_providers %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Create Account | DeepTrade</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.signup-wrapper{
+width:900px;
+height:550px;
+background:#111827;
+border-radius:12px;
+display:flex;
+box-shadow:0 0 40px rgba(0,0,0,0.6);
+}
+
+.left-panel{
+flex:1;
+background:linear-gradient(135deg,#1e293b,#0f172a);
+padding:40px;
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:600;
+margin-bottom:30px;
+}
+
+.tagline{
+font-size:18px;
+line-height:1.6;
+color:#cbd5f5;
+}
+
+.right-panel{
+flex:1;
+background:#020617;
+padding:60px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.signup-title{
+font-size:26px;
+color:white;
+margin-bottom:20px;
+}
+
+.input-field{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:none;
+border-radius:6px;
+background:#1e293b;
+color:white;
+}
+
+.signup-btn{
+width:100%;
+padding:14px;
+background:#2563eb;
+border:none;
+border-radius:6px;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+.signup-btn:hover{
+background:#1d4ed8;
+}
+
+.divider{
+text-align:center;
+margin:20px 0;
+color:#94a3b8;
+}
+
+.google-btn{
+width:100%;
+padding:12px;
+border-radius:6px;
+background:white;
+color:black;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+font-weight:500;
+text-decoration:none;
+}
+
+.login-link{
+margin-top:20px;
+text-align:center;
+color:#94a3b8;
+}
+
+.login-link a{
+color:#60a5fa;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="signup-wrapper">
+
+<div class="left-panel">
+
+<div class="logo">
+DeepTrade AI
+</div>
+
+<div class="tagline">
+Create your DeepTrade account and start exploring AI-powered stock market predictions.
+</div>
+
+</div>
+
+<div class="right-panel">
+
+<div class="signup-title">
+Create Account
+</div>
+
+<form method="POST">
+{% csrf_token %}
+
+<input type="email" name="email" placeholder="Email Address" class="input-field" required>
+
+<input type="text" name="username" placeholder="Username" class="input-field" required>
+
+<input type="password" name="password1" placeholder="Password" class="input-field" required>
+
+<input type="password" name="password2" placeholder="Confirm Password" class="input-field" required>
+
+<button class="signup-btn">
+Create Account
+</button>
+
+</form>
+
+{% if socialaccount_providers %}
+<div class="divider">
+or continue with
+</div>
+
+<a href="{% provider_login_url 'google' %}" class="google-btn">
+<img src="https://developers.google.com/identity/images/g-logo.png" width="20">
+Sign up with Google
+</a>
+{% endif %}
+
+<div class="login-link">
+Already have an account?
+<a href="/accounts/login/">Login</a>
+</div>
+
+</div>
+
+</div>
+
+</body>

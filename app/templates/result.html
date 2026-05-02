@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid pt-4 px-4">
+
+    <!-- ===== STOCK INFO ===== -->
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-10">
+            <div class="bg-secondary rounded p-4 glow-card">
+
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="text-primary">Information</h5>
+                    <a href="https://finance.yahoo.com/quote/{{ticker_value}}" target="_blank">Show More</a>
+                </div>
+
+                <table class="table table-borderless">
+                    <tr><td>Symbol</td><td>{{Symbol}}</td></tr>
+                    <tr><td>Name</td><td>{{Name}}</td></tr>
+                    <tr><td>Last Sale</td><td>{{Last_Sale}}</td></tr>
+
+                    <tr>
+                        <td>Net Change</td>
+                        <td class="{% if '-' in Net_Change %}text-danger{% else %}text-success{% endif %}">
+                            {{Net_Change}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Percent Change</td>
+                        <td class="{% if '-' in Percent_Change %}text-danger{% else %}text-success{% endif %}">
+                            {{Percent_Change}}
+                        </td>
+                    </tr>
+
+                    <tr><td>Market Cap</td><td>{{Market_Cap}}</td></tr>
+                    <tr><td>Country</td><td>{{Country}}</td></tr>
+                    <tr><td>IPO Year</td><td>{{IPO_Year}}</td></tr>
+                    <tr><td>Volume</td><td>{{Volume}}</td></tr>
+                    <tr><td>Sector</td><td>{{Sector}}</td></tr>
+                    <tr><td>Industry</td><td>{{Industry}}</td></tr>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- QR -->
+        <div class="col-sm-12 col-xl-2">
+            <div class="bg-secondary rounded p-4 text-center glow-card">
+                <h6>QR Code</h6>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://finance.yahoo.com/quote/{{ticker_value}}/">
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CHARTS ===== -->
+    <div class="row g-4 mt-2">
+
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary rounded p-4 glow-card">
+                <h6>Recent Price</h6>
+                {{ plot_div|safe }}
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary rounded p-4 glow-card">
+                <h6>ARIMA Prediction</h6>
+                {{ plot_div_pred1|safe }}
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary rounded p-4 glow-card">
+                <h6>Linear Regression</h6>
+                {{ plot_div_pred2|safe }}
+            </div>
+        </div>
+
+        <!-- Popular -->
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary rounded p-4 glow-card">
+                <h6>Popular Stocks</h6>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Price</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for stock in popular_stocks %}
+                        <tr>
+                            <td>{{ stock.Ticker }}</td>
+                            <td>{{ stock.Current_Price }}</td>
+
+                            <td class="{% if '-' in stock.Change %}text-danger{% else %}text-success{% endif %}">
+                                {{ stock.Change }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+/* Glow card /
+.glow-card {
+    transition: 0.3s;
+}
+
+.glow-card:hover {
+    box-shadow: 0 0 30px #00f0ff;
+}
+
+/ Green /
+.text-success {
+    color: #00ff9d !important;
+    text-shadow: 0 0 8px #00ff9d;
+}
+
+/ Red */
+.text-danger {
+    color: #ff4d4d !important;
+    text-shadow: 0 0 8px #ff4d4d;
+}
+/* FIX TABLE LINES */
+.table {
+    border-collapse: collapse !important;
+}
+
+.table td {
+    border-bottom: 1px solid rgba(0, 255, 255, 0.15) !important;
+    padding: 10px;
+}
+
+/* Optional: full grid lines */
+.table tr {
+    border-bottom: 1px solid rgba(0,255,255,0.1);
+}
+.table td {
+    border-bottom: 1px solid rgba(0,255,255,0.2);
+    box-shadow: 0 1px 0 rgba(0,255,255,0.1);
+}
+
+</style>
+
+{% endblock %}
