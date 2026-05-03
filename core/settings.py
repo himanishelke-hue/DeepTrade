@@ -146,27 +146,13 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
-# ─── Google OAuth (optional) ──────────────────────────────────────────────────
-# Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your .env to enable Google login.
-# Without them the Google button is automatically hidden — no crash, no admin setup needed.
-import subprocess
-_google_id     = os.environ.get('GOOGLE_CLIENT_ID') or config('GOOGLE_CLIENT_ID', default='')
-_google_id     = os.environ.get('GOOGLE_CLIENT_ID') or config('GOOGLE_CLIENT_ID', default='')
-_google_secret = os.environ.get('GOOGLE_CLIENT_SECRET') or config('GOOGLE_CLIENT_SECRET', default='')
-print(f"DEBUG GOOGLE SECRET: '{_google_secret[:10] if _google_secret else 'EMPTY'}'")
-if _google_id and _google_secret:
-    SOCIALACCOUNT_PROVIDERS = {
-        'google': {
-            'APP': {
-                'client_id': _google_id,
-                'secret':    _google_secret,
-                'key':       '',
-            },
-            'SCOPE':       ['profile', 'email'],
-            'AUTH_PARAMS': {'access_type': 'online'},
-        }
+# Google OAuth — always enable, credentials stored in Django Admin
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
     }
-
+}
 # ─── Email ────────────────────────────────────────────────────────────────────
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
