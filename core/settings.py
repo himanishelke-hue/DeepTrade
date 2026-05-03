@@ -87,7 +87,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 # ─── Database ─────────────────────────────────────────────────────────────────
-_db_url = config('DATABASE_URL', default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
+_db_url = os.environ.get('DATABASE_URL') or config('DATABASE_URL', default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
 DATABASES = {'default': dj_database_url.parse(_db_url, conn_max_age=600)}
 
 # ─── Caching — Fix 2: in-memory cache so yfinance results are reused ─────────
