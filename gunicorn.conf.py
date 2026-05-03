@@ -1,5 +1,10 @@
 import os
 import subprocess
+import os
+import subprocess
+
+# Print all env vars for debugging
+print("GOOGLE_ID:", os.environ.get('GOOGLE_CLIENT_ID', 'NOT FOUND'))
 
 # Run migrations
 subprocess.run(["python", "manage.py", "migrate", "--noinput"], check=False)

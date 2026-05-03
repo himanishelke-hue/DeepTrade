@@ -149,9 +149,9 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 # ─── Google OAuth (optional) ──────────────────────────────────────────────────
 # Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your .env to enable Google login.
 # Without them the Google button is automatically hidden — no crash, no admin setup needed.
-_google_id     = os.environ.get('GOOGLE_CLIENT_ID', '')
-_google_secret = os.environ.get('GOOGLE_CLIENT_SECRET', '')
-print(f"DEBUG GOOGLE ID: '{_google_id[:20] if _google_id else 'EMPTY'}'")
+import subprocess
+_google_id     = os.environ.get('GOOGLE_CLIENT_ID') or config('GOOGLE_CLIENT_ID', default='')
+_google_secret = os.environ.get('GOOGLE_CLIENT_SECRET') or config('GOOGLE_CLIENT_SECRET', default='')print(f"DEBUG GOOGLE ID: '{_google_id[:20] if _google_id else 'EMPTY'}'")
 print(f"DEBUG GOOGLE SECRET: '{_google_secret[:10] if _google_secret else 'EMPTY'}'")
 if _google_id and _google_secret:
     SOCIALACCOUNT_PROVIDERS = {
