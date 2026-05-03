@@ -151,6 +151,8 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 # Without them the Google button is automatically hidden — no crash, no admin setup needed.
 _google_id     = os.environ.get('GOOGLE_CLIENT_ID', '')
 _google_secret = os.environ.get('GOOGLE_CLIENT_SECRET', '')
+print(f"DEBUG GOOGLE ID: '{_google_id[:20] if _google_id else 'EMPTY'}'")
+print(f"DEBUG GOOGLE SECRET: '{_google_secret[:10] if _google_secret else 'EMPTY'}'")
 if _google_id and _google_secret:
     SOCIALACCOUNT_PROVIDERS = {
         'google': {
