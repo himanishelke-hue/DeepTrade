@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ─── Security ────────────────────────────────────────────────────────────────
 # Fix 1: Use SECRET_KEY env var, then SESSION_SECRET (Replit), then persist a
 #        stable generated key to .secret_key so restarts never corrupt sessions.
-SECRET_KEY = config('SECRET_KEY', default=None) or config('SESSION_SECRET', default=None)
+SECRET_KEY = os.environ.get('SECRET_KEY') or config('SECRET_KEY', default=None)
 if not SECRET_KEY:
     _key_file = BASE_DIR / '.secret_key'
     if _key_file.exists():
