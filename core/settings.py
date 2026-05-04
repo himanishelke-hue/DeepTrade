@@ -161,8 +161,7 @@ _csrf_raw = config('CSRF_TRUSTED_ORIGINS', default='http://127.0.0.1:8000,http:/
 CSRF_TRUSTED_ORIGINS = [h.strip() for h in _csrf_raw.split(',') if h.strip()]
 
 # ─── External API Keys ────────────────────────────────────────────────────────
-GROQ_API_KEY = config('GROQ_API_KEY', default='')
-
+GROQ_API_KEY = os.environ.get('GROQ_API_KEY') or config('GROQ_API_KEY', default='')
 # ─── Security Headers (production only) ──────────────────────────────────────
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
